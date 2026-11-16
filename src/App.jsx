@@ -4,6 +4,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
 
+import MyAppBar from './AppBar.jsx'
 import screenSize from './screenSize.jsx'
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
   const [count, setCount] = useState(0)
   return (
     <>
+      <MyAppBar />
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
