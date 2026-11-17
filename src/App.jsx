@@ -3,8 +3,13 @@ import heroImg from './assets/hero.png'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
+import Button from '@mui/material/Button';
+import { Routes, Route } from 'react-router-dom';
 
 import MyAppBar from './AppBar.jsx'
+import Dashboard from './Dashboard.jsx'
+import About from './About.jsx'
+import Resources from './Resources.jsx'
 import screenSize from './screenSize.jsx'
 
 function App() {
@@ -13,6 +18,12 @@ function App() {
   return (
     <>
       <MyAppBar />
+      <main style={{ marginLeft: 64 }}>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/resources" element={<Resources />} />
+        </Routes>
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
@@ -22,13 +33,18 @@ function App() {
         <div>
           {isMobile ? <p>This is a mobile view</p> : <p>This is a desktop view</p>}
         </div>
-        <button
+
+        <Button
           type="button"
-          className="counter"
+          variant="contained"
           onClick={() => setCount((count) => count + 1)}
+          sx={{
+            backgroundColor: '#6290c3',
+            '&:hover': { backgroundColor: '#4f7aa8' },
+         }}
         >
-          Count is {count}
-        </button>
+          Start Test Now!
+        </Button>
       </section>
 
       <div className="ticks"></div>
@@ -116,6 +132,7 @@ function App() {
 
       <div className="ticks"></div>
       <section id="spacer"></section>
+      </main>
     </>
   )
 }

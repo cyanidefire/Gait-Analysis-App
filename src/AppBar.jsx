@@ -3,18 +3,23 @@ import {
   AppBar, Toolbar, IconButton, Typography,
   List, ListItem, ListItemButton, ListItemText, ListItemIcon
 } from '@mui/material';
+import { Link } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import InfoIcon from '@mui/icons-material/Info';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import screenSize from './screenSize.jsx';
 
+import Dashboard from './Dashboard.jsx';
+import About from './About.jsx';
+import Resources from './Resources.jsx';
+
 const COLLAPSED = 64;
 
 const drawerItems = [
-  { label: 'Dashboard', href: '#dashboard', icon: <DashboardIcon /> },
-  { label: 'About', href: '#about', icon: <InfoIcon /> },
-  { label: 'Resources', href: '#resources', icon: <LibraryBooksIcon /> },
+  { label: 'Dashboard', to: '/', icon: <DashboardIcon /> },
+  { label: 'About', to: '/about', icon: <InfoIcon /> },
+  { label: 'Resources', to: '/resources', icon: <LibraryBooksIcon /> },
 ];
 
 export default function MyAppBar() {
@@ -63,14 +68,10 @@ export default function MyAppBar() {
         <List component="nav">
           {drawerItems.map((item) => (
             <ListItem key={item.label} disablePadding>
-            <ListItemButton
-                component="a"
-                href={item.href}
-                onClick={() => setOpen(false)}
-            >
-                    <ListItemIcon sx={{ color: '#033f63' }}>{item.icon}</ListItemIcon>
-                    <ListItemText primary={item.label} />
-                </ListItemButton>
+              <ListItemButton component={Link} to={item.to} onClick={() => setOpen(false)}>
+                <ListItemIcon sx={{ color: 'inherit' }}>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.label} />
+              </ListItemButton>
             </ListItem>
           ))}
         </List>
