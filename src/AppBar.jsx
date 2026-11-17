@@ -1,17 +1,20 @@
 import { useState } from 'react';
 import {
   AppBar, Toolbar, IconButton, Typography,
-  List, ListItem, ListItemButton, ListItemText,
+  List, ListItem, ListItemButton, ListItemText, ListItemIcon
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import InfoIcon from '@mui/icons-material/Info';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import screenSize from './screenSize.jsx';
 
 const COLLAPSED = 64;
 
 const drawerItems = [
-  { label: 'Dashboard', href: '#dashboard' },
-  { label: 'About', href: '#about' },
-  { label: 'Resources', href: '#resources' },
+  { label: 'Dashboard', href: '#dashboard', icon: <DashboardIcon /> },
+  { label: 'About', href: '#about', icon: <InfoIcon /> },
+  { label: 'Resources', href: '#resources', icon: <LibraryBooksIcon /> },
 ];
 
 export default function MyAppBar() {
@@ -60,13 +63,14 @@ export default function MyAppBar() {
         <List component="nav">
           {drawerItems.map((item) => (
             <ListItem key={item.label} disablePadding>
-              <ListItemButton
+            <ListItemButton
                 component="a"
                 href={item.href}
                 onClick={() => setOpen(false)}
-              >
-                <ListItemText primary={item.label} />
-              </ListItemButton>
+            >
+                    <ListItemIcon sx={{ color: '#033f63' }}>{item.icon}</ListItemIcon>
+                    <ListItemText primary={item.label} />
+                </ListItemButton>
             </ListItem>
           ))}
         </List>
